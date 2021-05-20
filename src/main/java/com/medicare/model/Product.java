@@ -1,8 +1,11 @@
 package com.medicare.model;
 
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.*; 
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,5 +29,7 @@ public class Product {
 	private Boolean active=true;
 	private byte[] image;
 	private Date date=new Date();
-	
+	@ManyToMany(mappedBy = "products",cascade = CascadeType.ALL)
+	@JsonIgnore
+	private List<Cart> carts;
 }

@@ -1,6 +1,5 @@
 package com.medicare.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,6 +19,7 @@ import com.medicare.service.AuthService;
 @RestController
 @CrossOrigin(origins = "*")
 public class Home {
+	
 
 	@Autowired
 	private AuthService authService;
@@ -59,6 +59,8 @@ public class Home {
 //		
 //		return otp;
 //	}
+	
+	
 
 	@GetMapping("/welcome")
 	public String home() {
