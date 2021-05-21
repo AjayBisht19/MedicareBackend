@@ -1,6 +1,6 @@
 package com.medicare.controller;
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
@@ -9,8 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -21,7 +24,6 @@ import com.medicare.repo.CartRepository;
 import com.medicare.repo.UserRepository;
 import com.medicare.repo.productRepository;
 import com.medicare.service.CartService;
-import com.medicare.service.ProductService;
 import com.medicare.service.UserService;
 
 
@@ -97,11 +99,25 @@ public class UserController {
 	public ResponseEntity<?> addToCart(Principal principal,@PathVariable("id") int id) throws IOException{
 		User user = this.userRepository.findByUsername(principal.getName());
 		Optional<Product> product = this.productRepository.findById(id);	
+		
 		 Cart cart = user.getCart();
+		 cart.setTotalAmount(cart.getTotalAmount()+product.get().getPrice());
 		cart.getProducts().add(product.get());
 		this.cartRepository.save(cart);
 		
 		return ResponseEntity.ok("Added to cart");
+	}
+	
+	@DeleteMapping("/product/{id}/removeFromCart")
+	public ResponseEntity<?> removeFromCart(Principal principal,@PathVariable("id") int id) throws IOException{
+		User user = this.userRepository.findByUsername(principal.getName());
+		Optional<Product> product = this.productRepository.findById(id);	
+		 Cart cart = user.getCart();
+		cart.getProducts().remove(product.get());
+		cart.setTotalAmount(cart.getTotalAmount()-product.get().getPrice());
+		this.cartRepository.save(cart);
+		
+		return ResponseEntity.ok("Remove from cart");
 	}
 	
 	@GetMapping("/getCart")
@@ -111,7 +127,20 @@ public class UserController {
 		List<Product> products = this.cartService.getProducts(cart);
 		return ResponseEntity.ok(products);
 	}
+	 
 	
+	@GetMapping("/cartAmount")
+	public int getCartAmount(Principal principal) {
+		User user = this.userRepository.findByUsername(principal.getName());
+		Cart cart = user.getCart();
+		return cart.getTotalAmount();
+	}
 	
-
+	@PostMapping("/changeAddress")
+	public ResponseEntity<?> changeAddress(@RequestBody String add,Principal principal){
+		User user = this.userRepository.findByUsername(principal.getName());
+		user.setAddress(add);
+		this.userRepository.save(user);
+		return ResponseEntity.ok(user);
+	}
 }

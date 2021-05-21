@@ -1,6 +1,6 @@
 package com.medicare.service;
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.medicare.model.Product;
-import com.medicare.repo.UserRepository;
 import com.medicare.repo.productRepository;
 
 @Service
@@ -86,8 +85,6 @@ public class UserService {
 		return product;
 	}
 	
-	public void addToCart(Product product) {
-		
-	}
+
 
 }

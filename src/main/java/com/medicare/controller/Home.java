@@ -38,7 +38,6 @@ public class Home {
 
 	@GetMapping("/checkUsername/{username}")
 	public ResponseEntity<?> checkUsername(@PathVariable("username") String username) {
-		System.out.println("askjdhfkjashdkfjhaksdhfljsdh");
 		User user = this.userRepository.findByUsername(username);
 		System.out.println(user);
 		if (user == null) {
@@ -62,21 +61,4 @@ public class Home {
 	
 	
 
-	@GetMapping("/welcome")
-	public String home() {
-		String text = "This page is nont allowed for unauthorized users";
-		return text;
-	}
-
-	@GetMapping("user/welcome")
-	public String user() {
-		String text = "User only";
-		return text;
-	}
-
-	@GetMapping("admin/welcome")
-	public String admin() {
-		String text = "Admin only";
-		return text;
-	}
 }

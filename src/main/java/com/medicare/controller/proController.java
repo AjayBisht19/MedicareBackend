@@ -22,7 +22,7 @@ public class proController {
 	
 	@GetMapping("/products")
 	public List<Product> getProducts() throws IOException {
-
+		
 		List<Product> allProducts = productService.getAllProducts();
 		return allProducts;
 	}	

@@ -1,6 +1,6 @@
 package com.medicare.model;
 
-import java.util.List; 
+import java.util.List;  
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +10,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
@@ -25,7 +24,7 @@ public class Cart {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int cartId;
-	private int totalAmount;
+	private int totalAmount=0;
 	@OneToOne(mappedBy = "cart")
 	private User user;
 	@ManyToMany

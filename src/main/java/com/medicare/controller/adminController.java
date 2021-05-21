@@ -18,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.medicare.dto.proReq;
 import com.medicare.model.Product;
-import com.medicare.repo.productRepository;
 import com.medicare.service.ProductService;
 
 @Controller
@@ -27,8 +26,7 @@ import com.medicare.service.ProductService;
 public class adminController {
 	@Autowired
 	private ProductService productService;
-	@Autowired
-	private productRepository proRepo;
+	
 	
 	private MultipartFile file;
 
@@ -48,9 +46,10 @@ public class adminController {
 	}
 	
 	@DeleteMapping("/product/{id}")
-	public ResponseEntity<?> deletePro(@PathVariable("id") Integer id){
+	public ResponseEntity<?> deleteProduct(@PathVariable("id") Integer id){
+		
 		System.out.println("delete");
-		proRepo.deleteById(id);
+		this.productService.deleteProduct(id);
 		return ResponseEntity.ok("Deleted");	
 	}
 	

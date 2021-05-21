@@ -17,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.medicare.dto.proReq;
 import com.medicare.model.Product;
+import com.medicare.model.User;
+import com.medicare.repo.UserRepository;
 import com.medicare.repo.productRepository;
 
 @Service
@@ -25,13 +27,15 @@ public class ProductService {
 	@Autowired
 	private productRepository proRepo;
 	
+	@Autowired
+	private UserRepository userRepository;
+	
 	public final String storageDirectoryPath = "C://Medicare";
 
 	public Product saveProduct(MultipartFile file, proReq proreq) {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		Path storageDirectory = Paths.get(storageDirectoryPath);
 		System.out.println("storage path " + storageDirectory);
-
 		if (!Files.exists(storageDirectory)) { // if the folder does not exist
 			try {
 				Files.createDirectories(storageDirectory); // we create the directory in the given storage directory
@@ -41,7 +45,6 @@ public class ProductService {
 				e.printStackTrace();// print the exception
 			}
 		}
-
 		System.out.println("file name " + fileName);
 		Path destination = Paths.get(storageDirectory + "\\" + fileName);
 		System.out.println("Destination " + destination);
@@ -51,10 +54,8 @@ public class ProductService {
 			System.out.println("Input Stream " + file.getInputStream());
 			Files.copy(file.getInputStream(), destination, StandardCopyOption.REPLACE_EXISTING);
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
-
 		Product product = new Product();
 		product.setImageName(file.getOriginalFilename());
 		product.setCategory(proreq.getCategory());
@@ -125,6 +126,21 @@ public class ProductService {
 		return productByName;
 	}
 
+	public void deleteProduct(int id) {
+		Optional<Product> findById = proRepo.findById(id);
+		Product product = findById.get();
+		List<User> allusers = userRepository.findAll();
+		for (User user : allusers) {
+			if(user.getCart()!=null) {
+				boolean remove = user.getCart().getProducts().remove(product);		
+				if(remove) {
+					user.getCart().setTotalAmount(user.getCart().getTotalAmount()-product.getPrice());
+				}
+			}
+		}
+		proRepo.deleteById(id);
+	}
+	
 	public Product getProduct(int id) throws IOException {
 		// TODO Auto-generated method stub
 		Optional<Product> product1 = proRepo.findById(id);
