@@ -1,6 +1,6 @@
 package com.medicare.controller;
 
-import java.io.IOException; 
+import java.io.IOException;   
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
@@ -18,13 +18,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.medicare.model.Cart;
+import com.medicare.model.OrderDetails;
+import com.medicare.model.OrderSummary;
 import com.medicare.model.Product;
 import com.medicare.model.User;
 import com.medicare.repo.CartRepository;
+import com.medicare.repo.OrderDetailsRepo;
 import com.medicare.repo.UserRepository;
 import com.medicare.repo.productRepository;
 import com.medicare.service.CartService;
 import com.medicare.service.UserService;
+import com.razorpay.*;
 
 
 @Controller
@@ -48,6 +52,10 @@ public class UserController {
 	@Autowired
 	private CartService cartService;
 	
+	@Autowired
+	private OrderDetailsRepo orderDetailsRepo; 
+		
+	private List<Product> orderProd;
 	
 	@GetMapping("/products")
 	public List<Product> getProducts() throws IOException {
@@ -98,8 +106,7 @@ public class UserController {
 	@GetMapping("/product/{id}/addToCart")
 	public ResponseEntity<?> addToCart(Principal principal,@PathVariable("id") int id) throws IOException{
 		User user = this.userRepository.findByUsername(principal.getName());
-		Optional<Product> product = this.productRepository.findById(id);	
-		
+		Optional<Product> product = this.productRepository.findById(id);			
 		 Cart cart = user.getCart();
 		 cart.setTotalAmount(cart.getTotalAmount()+product.get().getPrice());
 		cart.getProducts().add(product.get());
@@ -125,6 +132,9 @@ public class UserController {
 		User user = this.userRepository.findByUsername(principal.getName());
 		Cart cart = user.getCart();
 		List<Product> products = this.cartService.getProducts(cart);
+	
+		this.orderProd=products;
+		
 		return ResponseEntity.ok(products);
 	}
 	 
@@ -142,5 +152,45 @@ public class UserController {
 		user.setAddress(add);
 		this.userRepository.save(user);
 		return ResponseEntity.ok(user);
+	}
+	
+	@GetMapping(value = "/createOrder")
+	public ResponseEntity<?> createOrder(Principal principal) throws RazorpayException{
+		System.out.println("payment request");
+		User user = this.userRepository.findByUsername(principal.getName());
+		Order order = this.userService.createOrder(user);		
+		return ResponseEntity.ok(order.toString());
+	}
+	
+	@GetMapping("/createOrderSummary/{orderUID}")
+	public ResponseEntity<?> createOrderSummary(Principal principal,@PathVariable("orderUID") String orderUID ){
+		System.out.println("order done");
+		User user = this.userRepository.findByUsername(principal.getName());
+		Cart cart = user.getCart();
+		cart.getProducts().removeAll(cart.getProducts());
+		
+		OrderSummary orderSummary = user.getOrderSummary();
+		OrderDetails orderDetails = new OrderDetails();
+		orderDetails.setOrderSummary(orderSummary);
+		orderDetails.setOrderUID(orderUID);
+		orderDetails.setTotalAmount(cart.getTotalAmount());
+		cart.setTotalAmount(0);
+		this.cartRepository.save(cart);	
+		
+		orderDetails.setProducts(this.orderProd);
+//		cart.setOrdProducts(null);
+		for (Product pro : this.orderProd) {
+			System.out.println("** "+pro.getName());
+		}
+		this.orderProd=null;
+	this.orderDetailsRepo.save(orderDetails);		
+		return ResponseEntity.ok("cart emptied");
+	}
+	
+	@GetMapping("/getOrderProducts")
+	public ResponseEntity<?> getOrderProducts(Principal principal){
+		User user = this.userRepository.findByUsername(principal.getName());
+		List<OrderDetails> orderDetails = user.getOrderSummary().getOrderDetails();
+		return ResponseEntity.ok(orderDetails);
 	}
 }

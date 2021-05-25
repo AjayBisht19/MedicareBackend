@@ -1,6 +1,6 @@
 package com.medicare.model;
 
-import java.util.List;  
+import java.util.List;     
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,11 +13,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Cart {
@@ -36,4 +34,29 @@ public class Cart {
 	
 	
 	
+	
+	public int getCartId() {
+		return cartId;
+	}
+	public void setCartId(int cartId) {
+		this.cartId = cartId;
+	}
+	public int getTotalAmount() {
+		return totalAmount;
+	}
+	public void setTotalAmount(int totalAmount) {
+		this.totalAmount = totalAmount;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public List<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
 }
