@@ -1,6 +1,6 @@
 package com.medicare.service;
 
-import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.IOUtils; 
 
 import java.io.File;
 import java.io.IOException;
@@ -14,7 +14,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.medicare.dto.proReq;
@@ -33,31 +32,7 @@ public class ProductService {
 	private UserRepository userRepository;
 	
 
-	public Product saveProduct(MultipartFile file, proReq proreq) throws IOException {
-//		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-//		Path storageDirectory = Paths.get(storageDirectoryPath);
-//		System.out.println("storage path " + storageDirectory);
-//		if (!Files.exists(storageDirectory)) { // if the folder does not exist
-//			try {
-//				Files.createDirectories(storageDirectory); // we create the directory in the given storage directory
-//															// path
-//			} catch (Exception e) {
-//				System.out.println("askdfkajsdfahsd");
-//				e.printStackTrace();// print the exception
-//			}
-//		}
-//		System.out.println("file name " + fileName);
-//		Path destination = Paths.get(storageDirectory + "\\" + fileName);
-//		System.out.println("Destination " + destination);
-//
-//		try {
-//			System.out.println("input stream error");
-//			System.out.println("Input Stream " + file.getInputStream());
-//			Files.copy(file.getInputStream(), destination, StandardCopyOption.REPLACE_EXISTING);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		
+	public Product saveProduct(MultipartFile file, proReq proreq) throws IOException {	
 		File saveFile=new ClassPathResource("static").getFile();
 		Path path = Paths.get(saveFile.getAbsolutePath()+File.separator+file.getOriginalFilename());
 		System.out.println("input stream "+file.getInputStream());
@@ -82,10 +57,7 @@ public class ProductService {
 		for (Product product : products) {
 			System.out.println(product.getImageName());
 			File saveFile=new ClassPathResource("static").getFile();
-			Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());// retrieve the image by
-			
-//			Path destination = Paths.get(storageDirectoryPath + "\\" + product.getImageName());// retrieve the image by
-			// its name
+			Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());
 			product.setImage(IOUtils.toByteArray(destination.toUri()));
 		}
 		return products;
@@ -103,18 +75,13 @@ public class ProductService {
 		for (Product product : orderByPrice) {
 			System.out.println(product.getImageName());
 			File saveFile=new ClassPathResource("static").getFile();
-			Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());// retrieve the image by
-			
-//			Path destination = Paths.get(storageDirectoryPath + "\\" + product.getImageName());// retrieve the image by
-			// its name
+			Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());
 			product.setImage(IOUtils.toByteArray(destination.toUri()));
 		}
 		return orderByPrice;
 	}
 
 	public String[] getAllCategories() {
-		// TODO Auto-generated method stub
-
 		String[] categories = proRepo.getCategories();
 		return categories;
 	}
@@ -123,8 +90,6 @@ public class ProductService {
 		List<Product> productByCategory = proRepo.findByCategory(category);
 		for (Product product : productByCategory) {
 			System.out.println(product.getImageName());
-//			Path destination = Paths.get(storageDirectoryPath + "\\" + product.getImageName());// retrieve the image by
-			// its name
 			File saveFile=new ClassPathResource("static").getFile();
 			Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());// retrieve the image by
 			
@@ -137,10 +102,8 @@ public class ProductService {
 		List<Product> productByName = proRepo.findByName(name);
 		for (Product product : productByName) {
 			System.out.println(product.getImageName());
-//			Path destination = Paths.get(storageDirectoryPath + "\\" + product.getImageName());
 			File saveFile=new ClassPathResource("static").getFile();
-			Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());// retrieve the image by
-			
+			Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());
 			product.setImage(IOUtils.toByteArray(destination.toUri()));
 		}
 		return productByName;
@@ -162,46 +125,15 @@ public class ProductService {
 	}
 	
 	public Product getProduct(int id) throws IOException {
-		// TODO Auto-generated method stub
 		Optional<Product> product1 = proRepo.findById(id);
 		Product product = product1.get();
-//		Path destination = Paths.get(storageDirectoryPath + "\\" + product.getImageName());
 		File saveFile=new ClassPathResource("static").getFile();
-		Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());// retrieve the image by
-		
+		Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());
 		product.setImage(IOUtils.toByteArray(destination.toUri()));
 		return product;
 	}
 
-	public Product updateProduct(MultipartFile file, proReq proreq,int id) throws IOException {
-		
-//		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-//		Path storageDirectory = Paths.get(storageDirectoryPath);
-//		System.out.println("storage path " + storageDirectory);
-//
-//		if (!Files.exists(storageDirectory)) { // if the folder does not exist
-//			try {
-//				Files.createDirectories(storageDirectory); // we create the directory in the given storage directory
-//															// path
-//			} catch (Exception e) {
-//				System.out.println("askdfkajsdfahsd");
-//				e.printStackTrace();// print the exception
-//			}
-//		}
-//
-//		System.out.println("file name " + fileName);
-//		Path destination = Paths.get(storageDirectory + "\\" + fileName);
-//		System.out.println("Destination " + destination);
-//
-//		try {
-//			System.out.println("input stream error");
-//			System.out.println("Input Stream " + file.getInputStream());
-//			Files.copy(file.getInputStream(), destination, StandardCopyOption.REPLACE_EXISTING);
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			e.printStackTrace();
-//		}
-		
+	public Product updateProduct(MultipartFile file, proReq proreq,int id) throws IOException {		
 		File saveFile=new ClassPathResource("static").getFile();
 		Path path = Paths.get(saveFile.getAbsolutePath()+File.separator+file.getOriginalFilename());
 		System.out.println("input stream "+file.getInputStream());

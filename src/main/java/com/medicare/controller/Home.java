@@ -27,9 +27,6 @@ public class Home {
 	@Autowired
 	private UserRepository userRepository;
 
-//	@Autowired
-//	private EmailService emailService;
-
 	@PostMapping("/signup")
 	public ResponseEntity<?> signup(@RequestBody UserRequest userRequest) {
 		User user = this.authService.signup(userRequest);
@@ -45,20 +42,4 @@ public class Home {
 		}
 		return ResponseEntity.ok(true);
 	}
-
-//	@PostMapping("/email")
-//	public String sendEmail(@RequestBody EmailRequest emailRequest) {
-//		Random random = new Random(100000);
-//		int num = random.nextInt(999999);
-//		String otp = Integer.toString(num);
-//		String message="Your valid One Time Password for Medicare account is "+ otp;
-//		
-//		this.emailService.sendEmail(message, emailRequest.getTo());
-//		System.out.println(otp+ " OTP");
-//		
-//		return otp;
-//	}
-	
-	
-
 }

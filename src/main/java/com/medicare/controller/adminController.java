@@ -76,7 +76,7 @@ public class adminController {
 
 	@PostMapping("/product/{id}/editData")
 	public ResponseEntity<?> editData(@PathVariable("id") int id,@RequestBody proReq proreq) throws IOException {
-		System.out.println("hello hello hello" + this.file);
+		System.out.println(this.file);
 		Product product = productService.updateProduct(this.file,proreq,id);
 		return ResponseEntity.ok(product);
 	}
