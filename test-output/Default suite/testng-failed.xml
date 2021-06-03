@@ -3,12 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.medicare.testNG.TestNG">
+      <class name="com.medicare.MedicareBackendApplicationTests">
         <methods>
-          <include name="edge"/>
-          <include name="chrome"/>
+          <include name="logoutAndExit"/>
+          <include name="setDriver"/>
+          <include name="addToCart"/>
         </methods>
-      </class> <!-- com.medicare.testNG.TestNG -->
+      </class> <!-- com.medicare.MedicareBackendApplicationTests -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

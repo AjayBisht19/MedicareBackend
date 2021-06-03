@@ -15,6 +15,7 @@ public class AuthService {
 	private BCryptPasswordEncoder passwordEncoder;
 	@Autowired
 	private UserRepository userRepoitory;
+	
 	public User signup(UserRequest userRequest) {
 		User user=new User();
 		user.setAddress(userRequest.getAddress());
