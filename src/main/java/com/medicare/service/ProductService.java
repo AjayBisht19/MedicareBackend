@@ -70,16 +70,6 @@ public class ProductService {
 		proRepo.save(product);
 	}
 
-	public List<Product> getAllProductsByPrice() throws IOException {
-		List<Product> orderByPrice = proRepo.orderByPrice();
-		for (Product product : orderByPrice) {
-			System.out.println(product.getImageName());
-			File saveFile=new ClassPathResource("static").getFile();
-			Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());
-			product.setImage(IOUtils.toByteArray(destination.toUri()));
-		}
-		return orderByPrice;
-	}
 
 	public String[] getAllCategories() {
 		String[] categories = proRepo.getCategories();

@@ -26,11 +26,6 @@ public class proController {
 		return allProducts;
 	}	
 	
-	@GetMapping("/products/sortByPrice")
-	public List<Product> getProductsByPrice() throws IOException {
-		List<Product> allProducts = productService.getAllProductsByPrice();
-		return allProducts;
-	}
 	
 	@GetMapping("/products/categories")
 	public String[] getCategories() throws IOException {

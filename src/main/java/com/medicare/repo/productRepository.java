@@ -8,8 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.medicare.model.Product;
 
 public interface productRepository extends JpaRepository<Product, Integer> {
-	@Query("select p from Product p order by p.price")
-	public List<Product> orderByPrice();
+	
 
 	@Query("select distinct category from Product")
 	public String[] getCategories();
@@ -18,7 +17,5 @@ public interface productRepository extends JpaRepository<Product, Integer> {
 	@Query("select p from Product p where p.active = true")
 	public List<Product> findAllForUser();
 
-	@Query("select p from Product p  where p.active = true order by p.price")
-	public List<Product> orderByPriceForUser();
 
 }

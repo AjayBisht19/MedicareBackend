@@ -57,12 +57,6 @@ public class UserController {
 		return allProducts;
 	}
 
-	@GetMapping("/products/sortByPrice")
-	public List<Product> getProductsByPrice() throws IOException {
-		List<Product> allProducts = userService.getAllProductsByPrice();
-		return allProducts;
-	}
-
 	@GetMapping("/products/categories")
 	public String[] getCategories() throws IOException {
 		String[] allProducts = userService.getAllCategories();
