@@ -23,7 +23,6 @@ public class User {
 		super();
 		this.cart=new Cart();
 		this.orderSummary=new OrderSummary();
-		// TODO Auto-generated constructor stub
 	}
 	private String email;
 	@Column(unique = true)

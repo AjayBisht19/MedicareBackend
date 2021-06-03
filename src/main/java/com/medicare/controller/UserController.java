@@ -132,6 +132,13 @@ public class UserController {
 		Order order = this.userService.createOrder(user);
 		return ResponseEntity.ok(order.toString());
 	}
+	
+	@GetMapping("/getOrderProducts")
+	public ResponseEntity<?> getOrderProducts(Principal principal) {
+		User user = this.userRepository.findByUsername(principal.getName());
+		List<OrderDetails> orderDetails = user.getOrderSummary().getOrderDetails();
+		return ResponseEntity.ok(orderDetails);
+	}
 
 	@GetMapping("/createOrderSummary/{orderUID}")
 	public ResponseEntity<?> createOrderSummary(Principal principal, @PathVariable("orderUID") String orderUID) {
@@ -153,10 +160,5 @@ public class UserController {
 		return ResponseEntity.ok("Added to Order Summary");
 	}
 
-	@GetMapping("/getOrderProducts")
-	public ResponseEntity<?> getOrderProducts(Principal principal) {
-		User user = this.userRepository.findByUsername(principal.getName());
-		List<OrderDetails> orderDetails = user.getOrderSummary().getOrderDetails();
-		return ResponseEntity.ok(orderDetails);
-	}
+	
 }
