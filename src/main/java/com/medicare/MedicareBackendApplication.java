@@ -29,7 +29,7 @@ public class MedicareBackendApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		try {
-			if(this.userRepoitory.findByUsername("admin123")!=null) {
+			if(this.userRepoitory.findByUsername("admin123")==null) {
 			User user=new User();
 			user.setName("Administrator");
 			user.setEmail("admin@medicare.com");

@@ -75,18 +75,6 @@ public class UserController {
 		return ResponseEntity.ok(product);
 	}
 
-	@GetMapping("/products/{category}")
-	public List<Product> getByCategory(@PathVariable("category") String category) throws IOException {
-		List<Product> allProducts = userService.getByCategory(category);
-		return allProducts;
-	}
-
-	@GetMapping("/product/{name}")
-	public List<Product> getByName(@PathVariable("name") String name) throws IOException {
-		List<Product> allProducts = userService.getByName(name);
-		return allProducts;
-	}
-
 	@GetMapping("/product/{id}/addToCart")
 	public ResponseEntity<?> addToCart(Principal principal, @PathVariable("id") int id) throws IOException {
 		User user = this.userRepository.findByUsername(principal.getName());

@@ -86,28 +86,6 @@ public class ProductService {
 		return categories;
 	}
 
-	public List<Product> getByCategory(String category) throws IOException {
-		List<Product> productByCategory = proRepo.findByCategory(category);
-		for (Product product : productByCategory) {
-			System.out.println(product.getImageName());
-			File saveFile=new ClassPathResource("static").getFile();
-			Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());// retrieve the image by
-			
-			product.setImage(IOUtils.toByteArray(destination.toUri()));
-		}
-		return productByCategory;
-	}
-
-	public List<Product> getByName(String name) throws IOException {
-		List<Product> productByName = proRepo.findByName(name);
-		for (Product product : productByName) {
-			System.out.println(product.getImageName());
-			File saveFile=new ClassPathResource("static").getFile();
-			Path destination = Paths.get(saveFile.getAbsolutePath() + File.separator + product.getImageName());
-			product.setImage(IOUtils.toByteArray(destination.toUri()));
-		}
-		return productByName;
-	}
 
 	public void deleteProduct(int id) {
 		Optional<Product> findById = proRepo.findById(id);
