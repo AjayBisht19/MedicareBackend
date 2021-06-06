@@ -39,6 +39,7 @@ public class ProductService {
 		System.out.println("path: "+path);
 		Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 		
+		
 		Product product = new Product();
 		product.setImageName(file.getOriginalFilename());
 		product.setCategory(proreq.getCategory());
