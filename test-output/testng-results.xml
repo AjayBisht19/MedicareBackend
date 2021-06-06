@@ -2,82 +2,82 @@
 <testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-06-03T12:55:49Z" name="Suite" finished-at="2021-06-03T12:56:38Z" duration-ms="49151">
+  <suite started-at="2021-06-06T06:40:49Z" name="Suite" finished-at="2021-06-06T06:41:56Z" duration-ms="66790">
     <groups>
     </groups>
-    <test started-at="2021-06-03T12:55:49Z" name="Test" finished-at="2021-06-03T12:56:38Z" duration-ms="49151">
+    <test started-at="2021-06-06T06:40:49Z" name="Test" finished-at="2021-06-06T06:41:56Z" duration-ms="66790">
       <class name="com.medicare.AdminTest">
-        <test-method is-config="true" signature="setDriver()[pri:0, instance:com.medicare.AdminTest@d41f816]" started-at="2021-06-03T12:56:13Z" name="setDriver" finished-at="2021-06-03T12:56:17Z" duration-ms="3281" status="PASS">
+        <test-method is-config="true" signature="setDriver()[pri:0, instance:com.medicare.AdminTest@d41f816]" started-at="2021-06-06T06:41:24Z" name="setDriver" finished-at="2021-06-06T06:41:29Z" duration-ms="5022" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setDriver -->
-        <test-method signature="adminPage()[pri:0, instance:com.medicare.AdminTest@d41f816]" started-at="2021-06-03T12:56:17Z" name="adminPage" finished-at="2021-06-03T12:56:17Z" duration-ms="684" status="PASS">
+        <test-method signature="adminPage()[pri:0, instance:com.medicare.AdminTest@d41f816]" started-at="2021-06-06T06:41:29Z" name="adminPage" finished-at="2021-06-06T06:41:30Z" duration-ms="1308" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- adminPage -->
-        <test-method is-config="true" signature="Exit()[pri:0, instance:com.medicare.AdminTest@d41f816]" started-at="2021-06-03T12:56:17Z" name="Exit" finished-at="2021-06-03T12:56:20Z" duration-ms="2777" status="PASS">
+        <test-method is-config="true" signature="Exit()[pri:0, instance:com.medicare.AdminTest@d41f816]" started-at="2021-06-06T06:41:30Z" name="Exit" finished-at="2021-06-06T06:41:34Z" duration-ms="3424" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Exit -->
-        <test-method is-config="true" signature="setDriver()[pri:0, instance:com.medicare.AdminTest@d41f816]" started-at="2021-06-03T12:56:20Z" name="setDriver" finished-at="2021-06-03T12:56:24Z" duration-ms="3292" status="PASS">
+        <test-method is-config="true" signature="setDriver()[pri:0, instance:com.medicare.AdminTest@d41f816]" started-at="2021-06-06T06:41:34Z" name="setDriver" finished-at="2021-06-06T06:41:39Z" duration-ms="4907" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setDriver -->
-        <test-method signature="loginLogout()[pri:0, instance:com.medicare.AdminTest@d41f816]" started-at="2021-06-03T12:56:24Z" name="loginLogout" finished-at="2021-06-03T12:56:26Z" duration-ms="2099" status="PASS">
+        <test-method signature="loginLogout()[pri:0, instance:com.medicare.AdminTest@d41f816]" started-at="2021-06-06T06:41:39Z" name="loginLogout" finished-at="2021-06-06T06:41:41Z" duration-ms="2102" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginLogout -->
-        <test-method is-config="true" signature="Exit()[pri:0, instance:com.medicare.AdminTest@d41f816]" started-at="2021-06-03T12:56:26Z" name="Exit" finished-at="2021-06-03T12:56:28Z" duration-ms="2733" status="PASS">
+        <test-method is-config="true" signature="Exit()[pri:0, instance:com.medicare.AdminTest@d41f816]" started-at="2021-06-06T06:41:41Z" name="Exit" finished-at="2021-06-06T06:41:44Z" duration-ms="3076" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Exit -->
-        <test-method is-config="true" signature="setDriver()[pri:0, instance:com.medicare.AdminTest@d41f816]" started-at="2021-06-03T12:56:28Z" name="setDriver" finished-at="2021-06-03T12:56:32Z" duration-ms="3668" status="PASS">
+        <test-method is-config="true" signature="setDriver()[pri:0, instance:com.medicare.AdminTest@d41f816]" started-at="2021-06-06T06:41:44Z" name="setDriver" finished-at="2021-06-06T06:41:49Z" duration-ms="4620" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setDriver -->
-        <test-method signature="sortByPrice()[pri:0, instance:com.medicare.AdminTest@d41f816]" started-at="2021-06-03T12:56:32Z" name="sortByPrice" finished-at="2021-06-03T12:56:35Z" duration-ms="2917" status="PASS">
+        <test-method signature="sortByPrice()[pri:0, instance:com.medicare.AdminTest@d41f816]" started-at="2021-06-06T06:41:49Z" name="sortByPrice" finished-at="2021-06-06T06:41:52Z" duration-ms="3758" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- sortByPrice -->
-        <test-method is-config="true" signature="Exit()[pri:0, instance:com.medicare.AdminTest@d41f816]" started-at="2021-06-03T12:56:35Z" name="Exit" finished-at="2021-06-03T12:56:38Z" duration-ms="2857" status="PASS">
+        <test-method is-config="true" signature="Exit()[pri:0, instance:com.medicare.AdminTest@d41f816]" started-at="2021-06-06T06:41:52Z" name="Exit" finished-at="2021-06-06T06:41:56Z" duration-ms="3122" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Exit -->
       </class> <!-- com.medicare.AdminTest -->
       <class name="com.medicare.MedicareBackendApplicationTests">
-        <test-method is-config="true" signature="setDriver()[pri:0, instance:com.medicare.MedicareBackendApplicationTests@7c8c9a05]" started-at="2021-06-03T12:55:49Z" name="setDriver" finished-at="2021-06-03T12:55:55Z" duration-ms="6303" status="PASS">
+        <test-method is-config="true" signature="setDriver()[pri:0, instance:com.medicare.MedicareBackendApplicationTests@7c8c9a05]" started-at="2021-06-06T06:40:49Z" name="setDriver" finished-at="2021-06-06T06:40:58Z" duration-ms="9171" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setDriver -->
-        <test-method signature="contextLoads()[pri:0, instance:com.medicare.MedicareBackendApplicationTests@7c8c9a05]" started-at="2021-06-03T12:55:55Z" name="contextLoads" finished-at="2021-06-03T12:55:55Z" duration-ms="15" status="PASS">
+        <test-method signature="contextLoads()[pri:0, instance:com.medicare.MedicareBackendApplicationTests@7c8c9a05]" started-at="2021-06-06T06:40:58Z" name="contextLoads" finished-at="2021-06-06T06:40:58Z" duration-ms="82" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- contextLoads -->
-        <test-method is-config="true" signature="logoutAndExit()[pri:0, instance:com.medicare.MedicareBackendApplicationTests@7c8c9a05]" started-at="2021-06-03T12:55:55Z" name="logoutAndExit" finished-at="2021-06-03T12:55:56Z" duration-ms="884" status="PASS">
+        <test-method is-config="true" signature="logoutAndExit()[pri:0, instance:com.medicare.MedicareBackendApplicationTests@7c8c9a05]" started-at="2021-06-06T06:40:58Z" name="logoutAndExit" finished-at="2021-06-06T06:41:02Z" duration-ms="4073" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logoutAndExit -->
-        <test-method is-config="true" signature="setDriver()[pri:0, instance:com.medicare.MedicareBackendApplicationTests@7c8c9a05]" started-at="2021-06-03T12:55:56Z" name="setDriver" finished-at="2021-06-03T12:56:02Z" duration-ms="5880" status="PASS">
+        <test-method is-config="true" signature="setDriver()[pri:0, instance:com.medicare.MedicareBackendApplicationTests@7c8c9a05]" started-at="2021-06-06T06:41:02Z" name="setDriver" finished-at="2021-06-06T06:41:09Z" duration-ms="6853" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setDriver -->
-        <test-method signature="moveToCart()[pri:0, instance:com.medicare.MedicareBackendApplicationTests@7c8c9a05]" started-at="2021-06-03T12:56:02Z" name="moveToCart" finished-at="2021-06-03T12:56:04Z" duration-ms="2239" status="PASS">
+        <test-method signature="moveToCart()[pri:0, instance:com.medicare.MedicareBackendApplicationTests@7c8c9a05]" started-at="2021-06-06T06:41:09Z" name="moveToCart" finished-at="2021-06-06T06:41:11Z" duration-ms="2443" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- moveToCart -->
-        <test-method is-config="true" signature="logoutAndExit()[pri:0, instance:com.medicare.MedicareBackendApplicationTests@7c8c9a05]" started-at="2021-06-03T12:56:04Z" name="logoutAndExit" finished-at="2021-06-03T12:56:05Z" duration-ms="793" status="PASS">
+        <test-method is-config="true" signature="logoutAndExit()[pri:0, instance:com.medicare.MedicareBackendApplicationTests@7c8c9a05]" started-at="2021-06-06T06:41:12Z" name="logoutAndExit" finished-at="2021-06-06T06:41:13Z" duration-ms="1809" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logoutAndExit -->
-        <test-method is-config="true" signature="setDriver()[pri:0, instance:com.medicare.MedicareBackendApplicationTests@7c8c9a05]" started-at="2021-06-03T12:56:05Z" name="setDriver" finished-at="2021-06-03T12:56:10Z" duration-ms="5617" status="PASS">
+        <test-method is-config="true" signature="setDriver()[pri:0, instance:com.medicare.MedicareBackendApplicationTests@7c8c9a05]" started-at="2021-06-06T06:41:13Z" name="setDriver" finished-at="2021-06-06T06:41:20Z" duration-ms="6693" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setDriver -->
-        <test-method signature="moveToOrders()[pri:0, instance:com.medicare.MedicareBackendApplicationTests@7c8c9a05]" started-at="2021-06-03T12:56:10Z" name="moveToOrders" finished-at="2021-06-03T12:56:13Z" duration-ms="2321" status="PASS">
+        <test-method signature="moveToOrders()[pri:0, instance:com.medicare.MedicareBackendApplicationTests@7c8c9a05]" started-at="2021-06-06T06:41:20Z" name="moveToOrders" finished-at="2021-06-06T06:41:23Z" duration-ms="2682" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- moveToOrders -->
-        <test-method is-config="true" signature="logoutAndExit()[pri:0, instance:com.medicare.MedicareBackendApplicationTests@7c8c9a05]" started-at="2021-06-03T12:56:13Z" name="logoutAndExit" finished-at="2021-06-03T12:56:13Z" duration-ms="748" status="PASS">
+        <test-method is-config="true" signature="logoutAndExit()[pri:0, instance:com.medicare.MedicareBackendApplicationTests@7c8c9a05]" started-at="2021-06-06T06:41:23Z" name="logoutAndExit" finished-at="2021-06-06T06:41:24Z" duration-ms="1412" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logoutAndExit -->
