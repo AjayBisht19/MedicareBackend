@@ -19,7 +19,7 @@ public class AdminTest {
 	public void setDriver() {
 		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 		driver = new ChromeDriver();
-		driver.get("http://localhost:4200/");
+		driver.get("http://medicarebucket123.s3-website-us-east-1.amazonaws.com/login");
 
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
