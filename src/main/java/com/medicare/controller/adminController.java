@@ -1,6 +1,6 @@
 package com.medicare.controller;
 
-import java.io.IOException; 
+import java.io.IOException;  
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.medicare.dto.proReq;
 import com.medicare.model.Product;
@@ -27,27 +25,15 @@ public class adminController {
 	@Autowired
 	private ProductService productService;
 	
-	
-	private MultipartFile file;
-
-	@PostMapping("/upload")
-	public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile Recfile) throws IOException {
-		System.out.println("Original Image Byte Size - " + Recfile.getBytes().length);
-		System.out.println("recfile stream " + Recfile.getInputStream());
-		this.file = Recfile;
-
-		return ResponseEntity.ok("done");
-	}
 
 	@PostMapping("/uploadData")
 	public ResponseEntity<?> uploadData(@RequestBody proReq proreq) throws IOException {
-		Product product = productService.saveProduct(this.file,proreq);
+		Product product = productService.saveProduct(proreq);
 		return ResponseEntity.ok(product);
 	}
 	
 	@DeleteMapping("/product/{id}")
-	public ResponseEntity<?> deleteProduct(@PathVariable("id") Integer id){
-		
+	public ResponseEntity<?> deleteProduct(@PathVariable("id") Integer id){		
 		System.out.println("delete");
 		this.productService.deleteProduct(id);
 		return ResponseEntity.ok("Deleted");	
@@ -65,19 +51,10 @@ public class adminController {
 		return ResponseEntity.ok(product);
 	}
 	
-	@PostMapping("/product/{id}/editImage")
-	public ResponseEntity<?> editImage(@PathVariable("id") int id,@RequestParam("image") MultipartFile Recfile) throws IOException {
-		System.out.println("Original Image Byte Size - " + Recfile.getBytes().length);
-		System.out.println("recfile stream " + Recfile.getInputStream());
-		this.file = Recfile;
-		System.out.println("received file "+Recfile);
-		return ResponseEntity.ok("done");
-	}
 
 	@PostMapping("/product/{id}/editData")
 	public ResponseEntity<?> editData(@PathVariable("id") int id,@RequestBody proReq proreq) throws IOException {
-		System.out.println(this.file);
-		Product product = productService.updateProduct(this.file,proreq,id);
+		Product product = productService.updateProduct(proreq,id);
 		return ResponseEntity.ok(product);
 	}
 }

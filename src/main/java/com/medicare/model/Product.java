@@ -1,18 +1,12 @@
 package com.medicare.model;
 
-import java.util.Date;  
+import java.util.Date;   
 import java.util.List;
 
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor; 
-
-
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Product {
 	
@@ -24,12 +18,11 @@ public class Product {
 	private int price;
 	private String category;
 	private int quantity;
-	private String imageName;
+	private String imageURL;
 	private String seller;
 	private String descr;
 	private Boolean active=true;
-	@Transient
-	private byte[] image;
+	
 	private Date date=new Date();
 	@ManyToMany(mappedBy = "products",cascade = CascadeType.ALL)
 	@JsonIgnore
@@ -38,7 +31,11 @@ public class Product {
 	@ManyToMany(mappedBy = "products",cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<OrderDetails> orderDetails;
-	
+		
+	public Product() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public int getId() {
 		return Id;
 	}
@@ -69,12 +66,7 @@ public class Product {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public String getImageName() {
-		return imageName;
-	}
-	public void setImageName(String imageName) {
-		this.imageName = imageName;
-	}
+	
 	public String getSeller() {
 		return seller;
 	}
@@ -93,11 +85,12 @@ public class Product {
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
-	public byte[] getImage() {
-		return image;
+	
+	public String getImageURL() {
+		return imageURL;
 	}
-	public void setImage(byte[] image) {
-		this.image = image;
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
 	}
 	public Date getDate() {
 		return date;

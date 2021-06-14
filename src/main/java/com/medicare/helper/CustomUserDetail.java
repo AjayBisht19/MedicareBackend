@@ -1,5 +1,6 @@
 package com.medicare.helper;
 
+import java.util.Arrays; 
 import java.util.Collection;
 import java.util.List;
 
@@ -24,7 +25,8 @@ public class CustomUserDetail implements UserDetails{
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(user.getRole());
-		return List.of(simpleGrantedAuthority);
+		List<SimpleGrantedAuthority> SGA = Arrays.asList(simpleGrantedAuthority);
+		return SGA;
 	}
 
 	@Override

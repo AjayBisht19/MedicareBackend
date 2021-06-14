@@ -1,6 +1,6 @@
 package com.medicare.model;
 
-import java.util.List;     
+import java.util.List;      
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,12 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 public class Cart {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,6 +30,10 @@ public class Cart {
 	
 	
 	
+	public Cart() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public int getCartId() {
 		return cartId;
 	}

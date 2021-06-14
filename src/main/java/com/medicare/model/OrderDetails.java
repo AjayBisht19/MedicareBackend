@@ -1,6 +1,6 @@
 package com.medicare.model;
 
-import java.time.LocalDate;
+import java.time.LocalDate; 
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -14,12 +14,7 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 public class OrderDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,6 +35,12 @@ public class OrderDetails {
 	private LocalDate date=LocalDate.now();	
 	private int totalAmount=0;
 	
+	
+	
+	public OrderDetails() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public OrderSummary getOrderSummary() {
 		return orderSummary;
 	}

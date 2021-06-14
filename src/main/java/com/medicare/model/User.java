@@ -1,6 +1,6 @@
 package com.medicare.model;
 
-import javax.persistence.CascadeType;
+import javax.persistence.CascadeType; 
 import javax.persistence.Column;
 import javax.persistence.Entity;  
 import javax.persistence.GeneratedValue;
@@ -8,11 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnore;  
 
-import lombok.AllArgsConstructor;   
-
-@AllArgsConstructor
 @Entity
 public class User {
 	@Id
@@ -31,7 +28,6 @@ public class User {
 	private String password;
 	private String name;
 	private String role;
-	private Boolean isEnabled=false;
 	@Column(length = 5000)
 	private String address;
 	@OneToOne(cascade = CascadeType.ALL)
@@ -78,12 +74,7 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public Boolean getIsEnabled() {
-		return isEnabled;
-	}
-	public void setIsEnabled(Boolean isEnabled) {
-		this.isEnabled = isEnabled;
-	}
+	
 	public String getAddress() {
 		return address;
 	}
